@@ -1,8 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-const motion = (props) => {
-  return keyframes`
+const motion = (props) => keyframes`
   0% {
     width: ${props.initialWidth}px;
     height: ${props.initialHeight}px;
@@ -25,7 +24,6 @@ const motion = (props) => {
     border-radius: ${props.initialShape}%;
   }
 `;
-};
 
 const Animator = styled("div")`
   animation: ${(props) => motion} ${(props) => props.duration}s infinite;

@@ -1,6 +1,12 @@
 import React from "react";
 
-const Controls = ({ handleChange, animation }) => {
+const Controls = ({
+  handleChange,
+  animation,
+  resetAnimation,
+  randomAnimation,
+  colors,
+}) => {
   const {
     duration,
     initialColor,
@@ -15,8 +21,6 @@ const Controls = ({ handleChange, animation }) => {
     finalRotation,
     finalScale,
     finalShape,
-    resetAnimation,
-    randomAnimation,
   } = animation;
   return (
     <section className="inputControl">
@@ -65,14 +69,11 @@ const Controls = ({ handleChange, animation }) => {
           value={initialColor}
           onChange={handleChange}
         >
-          <option value="#3399FF">blue</option>
-          <option value="#FF3333">red</option>
-          <option value="#FA6900">orange</option>
-          <option value="#FEAE2D">yellow</option>
-          <option value="#00CC99">green</option>
-          <option value="#9A12B3">purple</option>
-          <option value="black">black</option>
-          <option value="white">white</option>
+          {colors.map((color) => (
+            <option key={color.value} value={color.value}>
+              {color.name}
+            </option>
+          ))}
         </select>
         <label htmlFor="initialScale">Starting Scale</label>
         <input
@@ -131,14 +132,11 @@ const Controls = ({ handleChange, animation }) => {
           value={finalColor}
           onChange={handleChange}
         >
-          <option value="#3399FF">blue</option>
-          <option value="#FF3333">red</option>
-          <option value="#FA6900">orange</option>
-          <option value="#FEAE2D">yellow</option>
-          <option value="#00CC99">green</option>
-          <option value="#9A12B3">purple</option>
-          <option value="black">black</option>
-          <option value="white">white</option>
+          {colors.map((color) => (
+            <option key={color.value} value={color.value}>
+              {color.name}
+            </option>
+          ))}
         </select>
         <label htmlFor="finalScale">Final scale</label>
         <input
@@ -160,10 +158,18 @@ const Controls = ({ handleChange, animation }) => {
           value={finalShape}
           onChange={handleChange}
         />
-        <button className="randomAnimation" onClick={randomAnimation}>
+        <button
+          className="randomAnimation"
+          onClick={randomAnimation}
+          type="button"
+        >
           Random
         </button>
-        <button className="resetAnimation" onClick={resetAnimation}>
+        <button
+          className="resetAnimation"
+          onClick={resetAnimation}
+          type="button"
+        >
           Reset
         </button>
         {/* <button className="save" onClick={fbUpload.bind(this)}>

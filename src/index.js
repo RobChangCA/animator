@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Container from "./components/Container";
+import "normalize.css";
 
 ReactDOM.render(
   <React.StrictMode>
